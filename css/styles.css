@@ -1,0 +1,86 @@
+body {
+	background-color: darkgrey;
+}
+
+.top {
+	text-align: center;
+	font-size: 2rem;
+	height: 10rem;
+	
+}
+
+nav {
+	text-align: center;
+	list-style-type: none;
+	margin: auto;
+	padding: auto;
+	
+}
+
+nav li {
+	display: inline;
+	width: 20rem;
+	
+}
+
+nav a {
+	width: 20rem;
+	font-size: 2rem;
+	text-decoration: none;
+	display: inline-block;
+	
+}
+
+.set1 {
+	width: 100rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.set2 {
+	width: 100rem;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.set1 li{
+	list-style: none;
+	display: inline;
+}
+
+.set2 li{
+	list-style: none;
+	display: inline;
+}
+
+.set1 a {
+	display: inline-block;
+	width: 30rem;
+	height: 16rem;
+	background-color: aqua; 
+}
+
+.set2 a {
+	display: inline-block;
+	width: 30rem;
+	height: 16rem;
+	background-color: aqua;
+}
+
+#a a {
+	background-image: url(../images/greenFish.png);
+	background-repeat: no-repeat;
+	
+}
+
+#b a {
+	background-image: url(../images/rabbit.png);
+	background-repeat: no-repeat;
+
+}
+
+.highScores {
+	color: royalblue;
+	text-align: center;
+	font-size: 2rem;
+}
