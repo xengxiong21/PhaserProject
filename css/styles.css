@@ -2,11 +2,20 @@ body {
 	background-color: darkgrey;
 }
 
+canvas {
+	display: block;
+	margin: auto;
+}
+
 .top {
 	text-align: center;
 	font-size: 2rem;
 	height: 10rem;
 	
+}
+
+.top p {
+	font-size: 1rem;
 }
 
 nav {
@@ -68,13 +77,13 @@ nav a {
 }
 
 #a a {
-	background-image: url(../images/greenFish.png);
+	background-image: url(../images/pongBackground.png);
 	background-repeat: no-repeat;
 	
 }
 
 #b a {
-	background-image: url(../images/rabbit.png);
+	background-image: url(../images/birdBackground.png);
 	background-repeat: no-repeat;
 
 }
@@ -84,3 +93,4 @@ nav a {
 	text-align: center;
 	font-size: 2rem;
 }
+
