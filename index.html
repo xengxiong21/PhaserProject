@@ -7,33 +7,38 @@
   <link href="css/styles.css" rel="stylesheet">
 	</head>
   <body>
-		<div class="top">
-			<h1>Phaser and Friends</h1>
-			<p>Games so simple you'd think it was made by students</p>
-		</div>
-		<nav>
-			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="contact.html">Contact</a></li>
-				<li><a href="index.html">Random Links</a></li>
-			</ul>
+		<header>
+            
+            <div class="dropdown">
+            <button onclick="dropdown()" class="dropbtn"></button>
+              <div id="myDropdown" class="dropdown-content">
+                <a href="index.html">Home</a>
+                <a href="contact.html">Contact</a>
+                <a href="index.html">Random Links</a>
+              </div>
+            </div>
+            
+			<img src="../images/phaserLogo.png" alt="Phaser and Friends" width="372px" height="224px">
+			<p>Games so simple you'd think they were made by students</p>
+        </header>
+      
+        
+		
+        <nav id="games">
+            <ul class="games">
+                <li id="pong"><a href="pong.html"></a></li>
+                <li id="bird"><a href="bird.html"></a></li>
+                <li id="snake"><a href="snake.html"></a></li>
+                <li id="d"><a href="game.html"></a></li>
+                <li id="e"><a href="game.html"></a></li>
+                <li id="f"><a href="game.html"></a></li>
+            </ul>
 		</nav>
-		
-		<ul class="set1">
-			<li id="a"><a href="pong.html"></a></li>
-			<li id="b"><a href="bird.html"></a></li>
-			<li id="c"><a href="snake.html"></a></li>
-		</ul>
-		<ul class="set2">
-			<li id="d"><a href="game.html"></a></li>
-			<li id="e"><a href="game.html"></a></li>
-			<li id="f"><a href="game.html"></a></li>
-		</ul>
-		
+      
 		<div class="highScores">
 			<h3>Leader Boards</h3>
 		</div>
 
-
+        <script src="js/mainPage.js"></script>
   </body>
 </html>
