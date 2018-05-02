@@ -124,3 +124,21 @@ nav a {
 	text-align: center;
 	font-size: 2rem;
 }
+
+label {
+    color: #fff;
+    
+}
+
+.topScorez {
+    color: #fff;
+}
+
+.scorez {
+    color: #fff;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}

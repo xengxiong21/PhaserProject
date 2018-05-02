@@ -24,16 +24,12 @@
             }  
         }
         
+        require 'dbConnect.php';
+        
         $submitPressed = sanitize('submit');
         
         if(isset($submitPressed)) {
             $playerName = sanitize('name');
-            
-            echo '<h3>First name:' . $playerName . '</h3>';
-        
-        
-        
-        require 'dbConnect.php';
 
             try  {
                 $pdo->beginTransaction();
@@ -42,14 +38,17 @@
 
                 $s->execute([$playerName]);
                 $pdo->commit();
+
             } catch (PDOException $ex) {
                 $pdo->rollback();
                 throw $ex;
 
             }
+            
+//            unset($_POST['submit']); // not working
+            
         }
         
-      
       ?>
 	<header>
             
@@ -62,12 +61,10 @@
               </div>
             </div>
             
-			<img src="../images/phaserLogo.png" alt="Phaser and Friends" width="372px" height="224px">
+			<img src="images/phaserLogo.png" alt="Phaser and Friends" width="372px" height="224px">
 			<p>Games so simple you'd think they were made by students</p>
         </header>
-      
-        
-		
+
         <nav id="games">
             <ul class="games">
                 <li id="pong"><a href="pong.php"></a></li>
@@ -91,6 +88,41 @@
 		<div class="highScores">
 			<h3>Leader Boards</h3>
 		</div>
+      
+ 
+      
+     <table>
+         <tr class="topScorez">
+              <th>Name</th>
+              <th>Game</th>
+              <th>Score</th>
+        </tr>
+      
+      <?php
+      
+      $queryScores = "SELECT * FROM player_scores";
+      $queryPongScore = callQuery($pdo, $queryScores);
+      
+      while ($pongScore = $queryPongScore->fetch()) {
+          $pongScorez = $pongScore['pong_score'];
+          $pongPlayer = $pongScore['playerName'];
+          
+          ?>
+        
+        <tr class="scorez">
+            <td><?=  $pongPlayer ?></td>
+            <td>Pong</td>
+            <td><?=  $pongScorez ?></td>
+        </tr>
+        
+        
+        <?php
+      }
+      
+      ?>
+        
+    
+     </table>
 
         <script src="js/mainPage.js"></script>
   </body>
