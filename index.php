@@ -26,9 +26,9 @@
 		
         <nav id="games">
             <ul class="games">
-                <li id="pong"><a href="pong.html"></a></li>
-                <li id="bird"><a href="bird.html"></a></li>
-                <li id="snake"><a href="snake.html"></a></li>
+                <li id="pong"><a href="pong.php"></a></li>
+                <li id="bird"><a href="bird.php"></a></li>
+                <li id="snake"><a href="snake.php"></a></li>
                 <li id="d"><a href="game.html"></a></li>
                 <li id="e"><a href="game.html"></a></li>
                 <li id="f"><a href="game.html"></a></li>
