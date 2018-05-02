@@ -12,9 +12,9 @@
             <div class="dropdown">
             <button onclick="dropdown()" class="dropbtn"></button>
               <div id="myDropdown" class="dropdown-content">
-                <a href="index.html">Home</a>
-                <a href="contact.html">Contact</a>
-                <a href="index.html">Random Links</a>
+                <a href="index.php">Home</a>
+                <a href="contact.php">Contact</a>
+                <a href="index.php">Random Links</a>
               </div>
             </div>
             
@@ -29,11 +29,16 @@
                 <li id="pong"><a href="pong.php"></a></li>
                 <li id="bird"><a href="bird.php"></a></li>
                 <li id="snake"><a href="snake.php"></a></li>
-                <li id="d"><a href="game.html"></a></li>
-                <li id="e"><a href="game.html"></a></li>
-                <li id="f"><a href="game.html"></a></li>
+                <li id="d"><a href="index.php"></a></li>
+                <li id="e"><a href="index.php"></a></li>
+                <li id="f"><a href="index.php"></a></li>
             </ul>
 		</nav>
+      
+      <form action="" method="post">
+          <label id ="playerName" 
+          
+      </form>
       
 		<div class="highScores">
 			<h3>Leader Boards</h3>
