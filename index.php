@@ -7,7 +7,51 @@
   <link href="css/styles.css" rel="stylesheet">
 	</head>
   <body>
-		<header>
+        <?php
+      
+        function sanitize($field) {
+              $output = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
+              return $output;
+        
+        }
+        
+        function callQuery($pdo, $query) {
+            
+            try {
+                return $pdo->query($query);
+            } catch (PDOException $ex) {
+                throw $ex;
+            }  
+        }
+        
+        $submitPressed = sanitize('submit');
+        
+        if(isset($submitPressed)) {
+            $playerName = sanitize('name');
+            
+            echo '<h3>First name:' . $playerName . '</h3>';
+        
+        
+        
+        require 'dbConnect.php';
+
+            try  {
+                $pdo->beginTransaction();
+                $query = "INSERT INTO player_scores (playerName) VALUES(?)";
+                $s = $pdo->prepare($query);
+
+                $s->execute([$playerName]);
+                $pdo->commit();
+            } catch (PDOException $ex) {
+                $pdo->rollback();
+                throw $ex;
+
+            }
+        }
+        
+      
+      ?>
+	<header>
             
             <div class="dropdown">
             <button onclick="dropdown()" class="dropbtn"></button>
@@ -35,11 +79,15 @@
             </ul>
 		</nav>
       
-      <form action="" method="post">
-          <label id ="playerName" 
+        <form action="" method="post">
+            <label for="playerName">Player Name:</label>
+            <input type="text" name="name" id="fName" value="">
+            <br>
+
+            <input type="submit" name="submit" value="Submit">
           
-      </form>
-      
+        </form>
+
 		<div class="highScores">
 			<h3>Leader Boards</h3>
 		</div>
