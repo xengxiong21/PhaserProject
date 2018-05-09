@@ -8,47 +8,8 @@
 	</head>
   <body>
         <?php
-      
-        function sanitize($field) {
-              $output = filter_input(INPUT_POST, $field, FILTER_SANITIZE_STRING);
-              return $output;
-        
-        }
-        
-        function callQuery($pdo, $query) {
-            
-            try {
-                return $pdo->query($query);
-            } catch (PDOException $ex) {
-                throw $ex;
-            }  
-        }
-        
-        require 'dbConnect.php';
-        
-        $submitPressed = sanitize('submit');
-        
-        if(isset($submitPressed)) {
-            $playerName = sanitize('name');
 
-            try  {
-                $pdo->beginTransaction();
-                $query = "INSERT INTO player_scores (playerName) VALUES(?)";
-                $s = $pdo->prepare($query);
-
-                $s->execute([$playerName]);
-                $pdo->commit();
-
-            } catch (PDOException $ex) {
-                $pdo->rollback();
-                throw $ex;
-
-            }
-            
-//            unset($_POST['submit']); // not working
-            
-        }
-        
+        require 'dbConnect.php';       
       ?>
 	<header>
             
@@ -76,6 +37,11 @@
             </ul>
 		</nav>
       
+      <?php
+      $submitPressed = sanitize('submit');
+      
+      if(!isset($submitPressed)) {
+          ?>
         <form action="" method="post">
             <label for="playerName">Player Name:</label>
             <input type="text" name="name" id="fName" value="">
@@ -84,11 +50,19 @@
             <input type="submit" name="submit" value="Submit">
           
         </form>
+      
+      <?php
+      
+      $_SESSION['userName'] = $_POST['name'];
+
+        }
+            ?>
+ 
 
 		<div class="highScores">
 			<h3>Leader Boards</h3>
 		</div>
-      
+
  
       
      <table>
@@ -101,26 +75,25 @@
       <?php
       
       $queryScores = "SELECT * FROM player_scores";
-      $queryPongScore = callQuery($pdo, $queryScores);
+      $findScores = callQuery($pdo, $queryScores);
       
-      while ($pongScore = $queryPongScore->fetch()) {
-          $pongScorez = $pongScore['pong_score'];
-          $pongPlayer = $pongScore['playerName'];
-          
+      while ($leaderBoards = $findScores->fetch()) {
+          $playerName = $leaderBoards['playerName'];
+          $gameName = $leaderBoards['game_name'];
+          $gameScore = $leaderBoards['player_score'];
+      
           ?>
         
         <tr class="scorez">
-            <td><?=  $pongPlayer ?></td>
-            <td>Pong</td>
-            <td><?=  $pongScorez ?></td>
+            <td><?=  $playerName ?></td>
+            <td><?=  $gameName ?></td>
+            <td><?=  $gameScore ?></td>
         </tr>
-        
         
         <?php
       }
-      
-      ?>
-        
+        ?>
+
     
      </table>
 
