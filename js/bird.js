@@ -39,8 +39,6 @@ function gameStart() {
 		launchBees();
 
 
-
-
 		// game inputs ( only using spacebar for now)
 		birdFly = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
 
@@ -131,8 +129,6 @@ function gameStart() {
 	function birdCollision(bee, bird) {
 		restartGame();
 	}
-
-
 
 	// restart funtion
 	function restartGame() {
