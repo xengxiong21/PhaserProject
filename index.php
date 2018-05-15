@@ -31,9 +31,6 @@
                 <li id="pong"><a href="pong.php"></a></li>
                 <li id="bird"><a href="bird.php"></a></li>
                 <li id="snake"><a href="snake.php"></a></li>
-                <li id="d"><a href="index.php"></a></li>
-                <li id="e"><a href="index.php"></a></li>
-                <li id="f"><a href="index.php"></a></li>
             </ul>
 		</nav>
       
