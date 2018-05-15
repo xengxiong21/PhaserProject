@@ -31,6 +31,7 @@
                 <li id="pong"><a href="pong.php"></a></li>
                 <li id="bird"><a href="bird.php"></a></li>
                 <li id="snake"><a href="snake.php"></a></li>
+                <li id="gHops"><a href="gardenHops.php"></a></li>
             </ul>
 		</nav>
       
