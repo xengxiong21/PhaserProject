@@ -112,6 +112,11 @@ nav a {
 	background-image: url(../images/birdBackground2.png);
 
 }
+
+#snake a {
+	background-image: url(../images/snakeLogo.png);
+
+}
 /*
 #snake a {
 	background-image: url(../images/.png);

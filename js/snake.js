@@ -1,33 +1,27 @@
 function gameStart() {
 
-    var head; 
-    var tail; 
-    var cursors;
-    var snake; 
-    var apple;
-    var gameText; 
-    var playerDirection;
+    // variables that will hold objects
+    var head, tail, cursors, snake, apple, gameText, playerDirection;
     var directions = Object.freeze({up: 0, down: 1, right: 2, left: 3});
-    var canvasWidth = 700; 
-    var canvasHeight = 700; 
-    var playerSize = 20;
-    var x = 128; 
-    var y = 0;
-    var frameCounter = 0;
-    var gameSpeed = 5;
-    var score = 0;
     
-    var game = new Phaser.Game(canvasWidth, canvasHeight, Phaser.AUTO,'',{preload : preload, create: create, update: update});
-	
+    // configuration variables and starting values
+    var canvasWidth = 832, canvasHeight = 640; 
+    var playerSize = 16;
+    var x = 128, y = 0;
+    var frameCounter = 0;
+    var gameSpeed = 8;
+    var score = 0;
+
+    // basic phaser preload/create/update functions
+
+    var game = new Phaser.Game(canvasWidth, canvasHeight, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
     function preload() {
-				
-        game.load.image('elephant', 'snakeAssets/snake.jpg');
-        game.load.image('apple', 'snakeAssets/snake.jpg');
-					
+        game.load.image('elephant', 'snakeAssets/elephant.png');
+        game.load.image('apple', 'snakeAssets/apple.png');
     }
-				
+
     function create() {
-                
         gameText = game.add.text(canvasWidth, 0, "0", {
             font: "28px Arial",
             fill: "#fff"
@@ -37,62 +31,46 @@ function gameStart() {
         placeRandomApple();
 
         cursors = game.input.keyboard.createCursorKeys();
-                
-
+        
+        game.input.keyboard.addKeyCapture([ Phaser.Keyboard.SPACEBAR ]);
+        spaceBarx = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
                 
     }
-			
+
     function update() {
-				
         gameText.text = score;
         updateDirection();
         frameCounter++;
-        
         if (frameCounter == gameSpeed) {
-            
             movePlayer();
-            
             if (playerCollidesWithSelf()) {
                 
-                alert("The game is over! Your score was: " + score);
-                deleteSnake();
-                initSnake();
-                score = 0;
-                gameSpeed = 20;
-                playerDirection = undefined;
-                x = 128;
-                y = 0;
-                gameText.text = "";
+                gameOver();
+                
+                
                 
             }
-            
             if (appleCollidesWithSnake()) {
-                
                 score++;
                 apple.destroy();
                 placeRandomApple();
-              
-                if (gameSpeed >= 5) {
-                    gameSpeed--;
-                }
-                
+                gameSpeed--;
+                if (gameSpeed <= 5) gameSpeed = 5;
             } else if (playerDirection != undefined) {
-                
                 removeTail();
-                
             }
             frameCounter = 0;
         }
-				
-				
-    } 
-    
-        function initSnake() {
+    }
+
+    // helper functions
+
+    function initSnake() {
         head = new Object();
         newHead(0, 0);
         tail = head;
-        newHead(80, 0);
-        newHead(80, 0);
+        newHead(64, 0);
+        newHead(128, 0);
 
     }
 
@@ -108,8 +86,8 @@ function gameStart() {
         if (apple != undefined) apple.destroy();
         apple = game.add.image(0, 0, 'apple');
         do {
-            apple.position.x = Math.floor(Math.random() * 13) * 64;
-            apple.position.y = Math.floor(Math.random() * 10) * 64;
+            apple.position.x = Math.floor(Math.random() * 52) * 16;
+            apple.position.y = Math.floor(Math.random() * 40) * 16;
         } while (appleCollidesWithSnake());
     }
 
@@ -200,10 +178,18 @@ function gameStart() {
             newHead(x, y);
         }
     }
-			
-			
-			
-			
-	
-	
-}
+    
+    function gameOver() {
+        alert("The game is over! Your score was: " + score);
+        deleteSnake();
+        initSnake();
+        score = 0;
+        gameSpeed = 8;
+        playerDirection = undefined;
+        x = 128;
+        y = 0;
+        gameText.text = "";
+    }
+    
+
+};
