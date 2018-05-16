@@ -8,8 +8,42 @@ session_start();
   <title>Phaser and Friends</title>
         
   <link href="css/styles.css" rel="stylesheet">
-	</head>
+    </head>
   <body>
+    <div>
+  <img class="phaser" src="imgs/blue.png">
+  <img class="phaser" src="imgs/green.png">
+  <img class="phaser" src="imgs/red.png">
+    <img class="phaser" src="imgs/purple.png">
+    <img class="phaser" src="imgs/orange.png">
+    <img id="and" src="imgs/and.png">
+    <img id="friends" src="imgs/friendsTransparent.png">
+</div>
+    
+<!--<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>-->
+<!--<script>
+    $(function() {
+        
+        $(myIndex).fadeIn("slow");
+    });
+</script>-->
+    
+    
+<script>
+var myIndex = 0;
+carousel();
+
+function carousel() {
+    var x = document.getElementsByClassName("phaser");
+    for (var i = 0; i < x.length; i++) {
+       x[i].style.display = "none";  
+    }
+    myIndex++;
+    if (myIndex > x.length) {myIndex = 1}    
+    x[myIndex-1].style.display = "block";  
+    setTimeout(carousel, 2000); // Change image every 2 seconds
+}
+</script>
         <?php
 
         require 'dbConnect.php';       
