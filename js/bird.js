@@ -131,6 +131,7 @@ function gameStart() {
 
 	// collider with bees
 	function birdCollision(bee, bird) {
+        
 		restartGame();
 	}
 
@@ -142,6 +143,7 @@ function gameStart() {
 		createBees();
 		launchBees();
         score = 0;
+        
 	}
 
 }
