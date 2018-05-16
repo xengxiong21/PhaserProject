@@ -10,7 +10,7 @@ session_start();
   <link href="css/styles.css" rel="stylesheet">
     </head>
   <body>
-    <div>
+    <div id="logo">
   <img class="phaser" src="imgs/blue.png">
   <img class="phaser" src="imgs/green.png">
   <img class="phaser" src="imgs/red.png">

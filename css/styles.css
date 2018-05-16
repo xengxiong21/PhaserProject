@@ -152,3 +152,28 @@ table {
     margin-left: auto;
     margin-right: auto;
 }
+
+/*#logo {
+    height: 224px;
+    width: 372px;
+}*/
+.phaser {
+    height: 140px;
+    width: 480px;
+}
+
+#and {
+    position: absolute;
+    left: 130px;
+    top: 160px;
+    height: 25px;
+    width: 45px;
+}
+
+#friends {
+    position: absolute;
+    left: 120px;
+    top: 150px;
+    height: 140px;
+    width: 250px;
+}
