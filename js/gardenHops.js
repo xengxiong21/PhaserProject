@@ -4,12 +4,12 @@
 
 function gameStart() {
 	// create our game
-    var game = new Phaser.Game(window.innerWidth * .8, window.innerHeight * .8, Phaser.AUTO,'',{preload : preload, create: create, update: update});
+    var game = new Phaser.Game(1158, 584, Phaser.AUTO,'',{preload : preload, create: create, update: update});
 
     var gravity = 500;
     var score = 0;
     
-    var sizeMultiplier = .8;
+    var sizeMultiplier = .4;
 
     function preload() {
             game.load.image('bunny', 'gardenHopsAssets/bunny.png');
