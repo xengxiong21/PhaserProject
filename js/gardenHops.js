@@ -4,10 +4,12 @@
 
 function gameStart() {
 	// create our game
-    var game = new Phaser.Game(1920, 972,Phaser.AUTO,'',{preload : preload, create: create, update: update});
+    var game = new Phaser.Game(window.innerWidth * .8, window.innerHeight * .8, Phaser.AUTO,'',{preload : preload, create: create, update: update});
 
     var gravity = 500;
     var score = 0;
+    
+    var sizeMultiplier = .8;
 
     function preload() {
             game.load.image('bunny', 'gardenHopsAssets/bunny.png');
@@ -25,6 +27,7 @@ function gameStart() {
     }
 
     function create() {
+        
 
             game.physics.startSystem(Phaser.Physics.ARCADE);
 
@@ -107,7 +110,7 @@ function gameStart() {
             bunny = game.add.sprite(game.world.centerX, game.world.height, 'bunny'); 
             bunny.anchor.setTo(0.5, 1);
             game.physics.enable(bunny, Phaser.Physics.ARCADE); 
-            bunny.scale.setTo(.45, .45);
+            bunny.scale.setTo(.45 * sizeMultiplier, .45 * sizeMultiplier);
 
     }
 
@@ -120,7 +123,7 @@ function gameStart() {
             game.physics.arcade.enable(tomatoes);
 
             if(tomato) {
-                    tomato.scale.setTo(.25, .25);
+                    tomato.scale.setTo(.25 * sizeMultiplier, .25 * sizeMultiplier);
 
                     tomato.reset(game.rnd.integerInRange(0, game.width), 0);
 
@@ -137,7 +140,7 @@ function gameStart() {
         game.physics.arcade.enable(carrots);
 
         if(carrot) {
-                carrot.scale.setTo(.25, .25);
+                carrot.scale.setTo(.25 * sizeMultiplier, .25 * sizeMultiplier);
 
                 carrot.reset(game.rnd.integerInRange(0, game.width), 0);
 
@@ -153,7 +156,7 @@ function gameStart() {
         game.physics.arcade.enable(cabbages);
 
         if(cabbage) {
-                cabbage.scale.setTo(.25, .25);
+                cabbage.scale.setTo(.25 * sizeMultiplier, .25 * sizeMultiplier);
 
                 cabbage.reset(game.rnd.integerInRange(0, game.width), 0);
 
@@ -169,7 +172,7 @@ function gameStart() {
         game.physics.arcade.enable(corn);
 
         if(cornCob) {
-                cornCob.scale.setTo(.25, .25);
+                cornCob.scale.setTo(.25 * sizeMultiplier, .25 * sizeMultiplier);
 
                 cornCob.reset(game.rnd.integerInRange(0, game.width), 0);
 
@@ -183,7 +186,7 @@ function gameStart() {
             game.physics.arcade.enable(peppers);
 
             if(pepper) {
-                    pepper.scale.setTo(.25, .25);
+                    pepper.scale.setTo(.25 * sizeMultiplier, .25 * sizeMultiplier);
 
                     pepper.reset(game.rnd.integerInRange(0, game.width), 0);
 
@@ -197,7 +200,7 @@ function gameStart() {
             game.physics.arcade.enable(pots);
 
             if(pot) {
-                    pot.scale.setTo(.25, .25);
+                    pot.scale.setTo(.25 * sizeMultiplier, .25 * sizeMultiplier);
 
                     pot.reset(game.rnd.integerInRange(0, game.width), 0);
 
