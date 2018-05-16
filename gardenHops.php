@@ -23,5 +23,34 @@
 			</ul>
 		</nav>
 		</div>
+            <form action="" id="scoreForm" method="post">
+           <input type="submit" name="submitScore" value="Submit Score">
+        </form>
+        <?php
+        require 'dbConnect.php';
+
+        $submitScore = sanitize('submitScore');
+        
+        if (isset($submitScore)) {
+            $gameName = 'Bunny Hops';
+            $playerScore = '0';
+            $playerName = $_SESSION['userName'];
+
+            try  {
+                 $pdo->beginTransaction();
+                 $query = "INSERT INTO player_scores (playerName, game_name, player_score) VALUES(?, ?, ?)";
+                 $s = $pdo->prepare($query);
+
+                 $s->execute([$playerName, $gameName, $playerScore]);
+                 $pdo->commit();
+
+             } catch (PDOException $ex) {
+                 $pdo->rollback();
+                 throw $ex;
+
+             }    
+        }
+ 
+       ?>
 	</body>
 </html>
