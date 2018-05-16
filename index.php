@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html>
   <head>
@@ -42,18 +45,22 @@
           ?>
         <form action="" method="post">
             <label for="playerName">Player Name:</label>
-            <input type="text" name="name" id="fName" value="">
+            <input type="text" name="name" id="name" value="">
             <br>
 
-            <input type="submit" name="submit" value="Submit">
+            <input type="submit" name="submitName" value="Submit">
           
         </form>
       
       <?php
       
-      $_SESSION['userName'] = $_POST['name'];
+        $gameName = sanitize('name');
 
-        }
+        if(isset($gameName)) {
+
+        $_SESSION['userName'] = $gameName;
+      }
+    }
             ?>
  
 
