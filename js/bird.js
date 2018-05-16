@@ -9,7 +9,8 @@ function gameStart() {
 	var gravity = 1000;
 	var birdPower = 300;
 
-	var time = 0;
+	var timer = 0;
+    var score = 0;
 
 	// load any assets ahead of time
 	function preload() {
@@ -41,13 +42,22 @@ function gameStart() {
 
 		// game inputs ( only using spacebar for now)
 		birdFly = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        
+        timer = game.time.create(false);
+        
+        timer.loop(1000, updateCounter, this);
+        
+        timer.start();
 
 
-		createTimeText();
+	
 
 	}// end of create()
 
-
+    function updateCounter(){
+        
+        score++;
+    }
 
 	//
 	// update function
@@ -66,9 +76,9 @@ function gameStart() {
 			bird.body.velocity.y = - birdPower;
 		}
 
-
-		score = game.time.totalElapsedSeconds();
-		console.log(score);
+        game.debug.text('Score: ' + score, 32, 32);
+		//score = game.time.totalElapsedSeconds();
+		//console.log(score);
 
 		// this will update when we collide, calls the birdCollision function when bee and bird 'overlap'
 		game.physics.arcade.overlap(bird, bees, birdCollision, null, this);
@@ -108,13 +118,7 @@ function gameStart() {
 		}
 
 
-	function createTimeText() {
-		gameScoreText = game.add.text(30, 10, 'Time:',{
-			font: "16px Gabriella",
-				fill: "#FFFFFF",
-				align: "left"
-			});
-	}
+
 
 	function createBees() {
 		bees = game.add.group();
@@ -137,6 +141,7 @@ function gameStart() {
 		createBird();
 		createBees();
 		launchBees();
+        score = 0;
 	}
 
 }
